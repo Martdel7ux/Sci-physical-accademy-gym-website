@@ -26,6 +26,7 @@
   --radius-lg:   20px;
   --ease:        cubic-bezier(0.4, 0, 0.2, 1);
   --dur:         0.35s;
+  --anim-ease:   cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* ── Reset ── */
@@ -161,22 +162,47 @@ ul  { list-style: none; }
 
 .btn-lg { padding: 15px 32px; font-size: 0.93rem; }
 
-/* ── Scroll animations ── */
+/* ── Scroll-driven entrance animations ── */
+
 [data-animate],
 [data-animate-left],
-[data-animate-right] {
+[data-animate-right],
+[data-animate-scale],
+[data-animate-fade] {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.65s var(--ease), transform 0.65s var(--ease);
+  will-change: opacity, transform;
+  transition:
+    opacity 0.8s var(--anim-ease, cubic-bezier(0.22, 1, 0.36, 1)),
+    transform 0.8s var(--anim-ease, cubic-bezier(0.22, 1, 0.36, 1));
+  transition-delay: var(--anim-delay, 0ms);
 }
+
+[data-animate]       { transform: translateY(24px); }
 [data-animate-left]  { transform: translateX(-36px); }
 [data-animate-right] { transform: translateX(36px); }
+[data-animate-scale] { transform: scale(0.95); }
+[data-animate-fade]  { transform: none; transition-duration: 1.2s; }
 
 [data-animate].visible,
 [data-animate-left].visible,
-[data-animate-right].visible {
+[data-animate-right].visible,
+[data-animate-scale].visible,
+[data-animate-fade].visible {
   opacity: 1;
-  transform: translate(0);
+  transform: none;
+  will-change: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-animate],
+  [data-animate-left],
+  [data-animate-right],
+  [data-animate-scale],
+  [data-animate-fade] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }
 
 

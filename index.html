@@ -101,40 +101,40 @@
     <div class="about-container">
       <div class="about-grid">
 
-        <!-- Left: text content -->
-        <div class="about-content" data-animate-left>
-          <p class="about-eyebrow">
+        <!-- Left: text content — children stagger individually -->
+        <div class="about-content">
+          <p class="about-eyebrow" data-animate data-delay="0">
             <span class="about-eyebrow-dot"></span>
             Our Story
           </p>
-          <h2 class="about-heading">Science Is Our<br>Foundation</h2>
-          <p class="about-lead">
+          <h2 class="about-heading" data-animate data-delay="80">Science Is Our<br>Foundation</h2>
+          <p class="about-lead" data-animate data-delay="160">
             SCI Physical Academy was born from a simple conviction: every training decision should be grounded in scientific data, not guesswork.
           </p>
-          <p class="about-body">
+          <p class="about-body" data-animate data-delay="230">
             Founded in Gerakas in 2019, we spent five years building a reputation for methodical, results-driven training. The demand grew and so did we. Our second space in Paiania brings the same approach to the wider Mesogeia region.
           </p>
 
-          <div class="about-stats">
-            <div class="about-stat" data-animate>
+          <div class="about-stats" data-animate data-delay="310">
+            <div class="about-stat">
               <span class="about-stat-num">2019</span>
               <span class="about-stat-label">Founded</span>
             </div>
-            <div class="about-stat" data-animate>
+            <div class="about-stat">
               <span class="about-stat-num">5+</span>
               <span class="about-stat-label">Years of Training</span>
             </div>
-            <div class="about-stat" data-animate>
+            <div class="about-stat">
               <span class="about-stat-num">2</span>
               <span class="about-stat-label">Locations</span>
             </div>
           </div>
 
-          <a href="#trial" class="about-cta">Start Your Journey</a>
+          <a href="#trial" class="about-cta" data-animate data-delay="410">Start Your Journey</a>
         </div>
 
-        <!-- Right: image -->
-        <div class="about-visual" data-animate-right>
+        <!-- Right: image — scale in -->
+        <div class="about-visual" data-animate-scale data-delay="120">
           <img
             src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80"
             alt="Scientific athletic training at SCI Physical Academy"
@@ -157,7 +157,7 @@
 
       <div class="services-flipper" id="servicesFlipper">
 
-        <div class="flip-card">
+        <div class="flip-card" data-animate data-delay="0">
           <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=900&q=80" alt="Personal Training" class="flip-img">
           <div class="flip-overlay"></div>
           <div class="flip-default">
@@ -176,7 +176,7 @@
           </div>
         </div>
 
-        <div class="flip-card">
+        <div class="flip-card" data-animate data-delay="80">
           <img src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=900&q=80" alt="Personal Training for Athletes" class="flip-img">
           <div class="flip-overlay"></div>
           <div class="flip-badge">Popular</div>
@@ -196,7 +196,7 @@
           </div>
         </div>
 
-        <div class="flip-card">
+        <div class="flip-card" data-animate data-delay="160">
           <img src="https://images.unsplash.com/photo-1571388208497-71bedc66e932?auto=format&fit=crop&w=900&q=80" alt="Group Personal Training" class="flip-img">
           <div class="flip-overlay"></div>
           <div class="flip-default">
@@ -215,7 +215,7 @@
           </div>
         </div>
 
-        <div class="flip-card">
+        <div class="flip-card" data-animate data-delay="240">
           <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=900&q=80" alt="Pilates Reformer" class="flip-img">
           <div class="flip-overlay"></div>
           <div class="flip-default">
@@ -234,7 +234,7 @@
           </div>
         </div>
 
-        <div class="flip-card">
+        <div class="flip-card" data-animate data-delay="320">
           <img src="https://images.unsplash.com/photo-1576858574144-9ae1ebcf5ae5?auto=format&fit=crop&w=900&q=80" alt="Kids Fitness and Gymnastics" class="flip-img">
           <div class="flip-overlay"></div>
           <div class="flip-default">
@@ -253,7 +253,7 @@
           </div>
         </div>
 
-        <div class="flip-card">
+        <div class="flip-card" data-animate data-delay="400">
           <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=900&q=80" alt="Football Training" class="flip-img">
           <div class="flip-overlay"></div>
           <div class="flip-default">
@@ -353,14 +353,14 @@
 
   <!-- FREE TRIAL CTA -->
   <section class="trial-cta" id="trial">
-    <div class="trial-inner" data-animate>
+    <div class="trial-inner">
       <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1600&q=80" alt="" class="trial-bg-img" aria-hidden="true">
       <div class="trial-bg-blur"></div>
 
-      <h2 class="trial-title">Come Discover<br>Our Space, Free</h2>
-      <p class="trial-subtitle">A complimentary trial session. No obligation. No pressure. Just training.</p>
+      <h2 class="trial-title" data-animate data-delay="0">Come Discover<br>Our Space, Free</h2>
+      <p class="trial-subtitle" data-animate data-delay="100">A complimentary trial session. No obligation. No pressure. Just training.</p>
 
-      <div class="trial-contacts">
+      <div class="trial-contacts" data-animate data-delay="200">
         <a href="https://wa.me/306946160793" class="trial-contact-link" target="_blank" rel="noopener">
           <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
             <path d="M18 10a8 8 0 0 1-8 8 7.9 7.9 0 0 1-4-1.1L2 18l1.2-3.8A8 8 0 1 1 18 10Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
@@ -383,21 +383,21 @@
     <div class="schedule-container">
       <div class="schedule-grid">
 
-        <!-- Left: heading content -->
-        <div class="schedule-left" data-animate-left>
-          <p class="sched-eyebrow">
+        <!-- Left: heading content — children stagger -->
+        <div class="schedule-left">
+          <p class="sched-eyebrow" data-animate data-delay="0">
             <span class="sched-dot"></span>
             Hours
           </p>
-          <h2 class="sched-heading">Our doors,<br>our hours.</h2>
-          <p class="sched-sub">We structured our hours around your day. Early mornings, afternoons, and evenings. Weekends available by appointment.</p>
+          <h2 class="sched-heading" data-animate data-delay="80">Our doors,<br>our hours.</h2>
+          <p class="sched-sub" data-animate data-delay="160">We structured our hours around your day. Early mornings, afternoons, and evenings. Weekends available by appointment.</p>
         </div>
 
-        <!-- Right: hours list + programme -->
-        <div class="schedule-right" data-animate-right>
+        <!-- Right: hours list + programme — rows cascade in -->
+        <div class="schedule-right">
 
           <dl class="hours-list">
-            <div class="hours-row" data-days="1,2,3,4,5">
+            <div class="hours-row" data-days="1,2,3,4,5" data-animate data-delay="0">
               <dt class="hours-day">
                 <span class="hours-today-dot" aria-hidden="true"></span>
                 Monday to Friday
@@ -408,7 +408,7 @@
                 16:30 – 22:30
               </dd>
             </div>
-            <div class="hours-row" data-days="6">
+            <div class="hours-row" data-days="6" data-animate data-delay="90">
               <dt class="hours-day">
                 <span class="hours-today-dot" aria-hidden="true"></span>
                 Saturday
@@ -418,7 +418,7 @@
                 <span class="hours-appt">By appointment</span>
               </dd>
             </div>
-            <div class="hours-row hours-row--closed" data-days="0">
+            <div class="hours-row hours-row--closed" data-days="0" data-animate data-delay="180">
               <dt class="hours-day">
                 <span class="hours-today-dot" aria-hidden="true"></span>
                 Sunday
@@ -427,10 +427,10 @@
             </div>
           </dl>
 
-          <p class="hours-note">Hours may vary during public holidays and seasonal events.</p>
+          <p class="hours-note" data-animate data-delay="280">Hours may vary during public holidays and seasonal events.</p>
 
           <!-- Weekly programme — refined -->
-          <div class="week-schedule">
+          <div class="week-schedule" data-animate data-delay="360">
             <p class="week-label">Weekly Programme</p>
             <div class="week-block">
               <span class="week-time">09:00 – 13:00</span>
@@ -467,17 +467,17 @@
     <div class="contact-container">
       <div class="contact-grid">
 
-        <!-- Left: all contact content -->
-        <div class="contact-info" data-animate-left>
+        <!-- Left: all contact content — children stagger -->
+        <div class="contact-info">
 
-          <p class="contact-eyebrow">
+          <p class="contact-eyebrow" data-animate data-delay="0">
             <span class="contact-dot"></span>
             Find Us
           </p>
-          <h2 class="contact-heading">Get in Touch</h2>
+          <h2 class="contact-heading" data-animate data-delay="70">Get in Touch</h2>
 
           <!-- Paiania -->
-          <div class="contact-block">
+          <div class="contact-block" data-animate data-delay="150">
             <h3 class="contact-location">Paiania</h3>
             <address class="contact-address">
               <a href="https://maps.google.com/?q=60+Lavriou+Avenue+Paiania" target="_blank" rel="noopener" class="contact-link">60 Lavriou Avenue, Paiania 190 02</a>
@@ -486,10 +486,10 @@
             </address>
           </div>
 
-          <hr class="contact-rule">
+          <hr class="contact-rule" data-animate-fade data-delay="210">
 
           <!-- Gerakas -->
-          <div class="contact-block">
+          <div class="contact-block" data-animate data-delay="250">
             <h3 class="contact-location">Gerakas</h3>
             <address class="contact-address">
               <span class="contact-link contact-plain">197 Kleisthenous &amp; 17 Athinas, Gerakas</span>
@@ -497,10 +497,10 @@
             </address>
           </div>
 
-          <hr class="contact-rule">
+          <hr class="contact-rule" data-animate-fade data-delay="310">
 
           <!-- How to reach us -->
-          <div class="contact-block">
+          <div class="contact-block" data-animate data-delay="350">
             <h3 class="contact-location">How to Reach Us</h3>
             <ul class="contact-transport">
               <li>Easy access from Paiania, Glyka Nera &amp; Attiki Odos</li>
@@ -509,18 +509,18 @@
             </ul>
           </div>
 
-          <hr class="contact-rule">
+          <hr class="contact-rule" data-animate-fade data-delay="410">
 
           <!-- Socials -->
-          <div class="contact-social">
+          <div class="contact-social" data-animate data-delay="450">
             <a href="https://facebook.com/sciphysicalacademy" target="_blank" rel="noopener" class="contact-social-link">Facebook</a>
             <a href="https://instagram.com/sciphysicalacademy" target="_blank" rel="noopener" class="contact-social-link">Instagram</a>
           </div>
 
         </div>
 
-        <!-- Right: map -->
-        <div class="contact-map" data-animate-right>
+        <!-- Right: map — scale in -->
+        <div class="contact-map" data-animate-scale data-delay="180">
           <div class="map-wrap">
             <iframe
               title="SCI Physical Academy Paiania location"
@@ -543,7 +543,7 @@
       <div class="footer-grid">
 
         <!-- Col 1: Brand -->
-        <div class="footer-brand">
+        <div class="footer-brand" data-animate data-delay="0">
           <a href="#home" class="footer-logo-link">
             <svg width="24" height="24" viewBox="0 0 36 36" fill="none" aria-hidden="true">
               <rect x="2" y="14" width="6" height="8" rx="2" fill="currentColor"/>
@@ -563,7 +563,7 @@
         </div>
 
         <!-- Col 2: Services -->
-        <nav class="footer-col" aria-label="Services">
+        <nav class="footer-col" aria-label="Services" data-animate data-delay="80">
           <h4 class="footer-col-heading">Services</h4>
           <ul class="footer-links">
             <li><a href="#services" class="footer-link">Personal Training</a></li>
@@ -576,7 +576,7 @@
         </nav>
 
         <!-- Col 3: Locations -->
-        <nav class="footer-col" aria-label="Locations">
+        <nav class="footer-col" aria-label="Locations" data-animate data-delay="160">
           <h4 class="footer-col-heading">Locations</h4>
           <ul class="footer-links">
             <li class="footer-location">
@@ -591,7 +591,7 @@
         </nav>
 
         <!-- Col 4: Contact -->
-        <div class="footer-col">
+        <div class="footer-col" data-animate data-delay="240">
           <h4 class="footer-col-heading">Contact</h4>
           <address class="footer-links footer-address">
             <a href="tel:+306946160793" class="footer-link footer-num">+30 694 616 0793</a>
@@ -617,7 +617,7 @@
     </div>
 
     <!-- Oversized wordmark -->
-    <p class="footer-wordmark" aria-hidden="true">SCI</p>
+    <p class="footer-wordmark" aria-hidden="true" data-animate-fade data-delay="300">SCI</p>
   </footer>
 
   <script src="js/main.js"></script>

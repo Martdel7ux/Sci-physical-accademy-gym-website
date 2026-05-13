@@ -78,24 +78,32 @@ const activateLink = () => {
 window.addEventListener('scroll', activateLink, { passive: true });
 
 /* ── Scroll-reveal animations ── */
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry, i) => {
-    if (entry.isIntersecting) {
-      setTimeout(() => entry.target.classList.add('visible'), i * 80);
-      revealObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-document.querySelectorAll('[data-animate], [data-animate-left], [data-animate-right]')
-  .forEach(el => revealObserver.observe(el));
+const animSelector = '[data-animate], [data-animate-left], [data-animate-right], [data-animate-scale], [data-animate-fade]';
 
-/* ── Staggered children in grids ── */
-document.querySelectorAll('.services-grid, .why-grid').forEach(grid => {
-  Array.from(grid.children).forEach((child, i) => {
-    child.style.transitionDelay = `${i * 60}ms`;
-  });
+/* Apply data-delay as a CSS custom property before observing */
+document.querySelectorAll(animSelector).forEach(el => {
+  const delay = el.dataset.delay;
+  if (delay) el.style.setProperty('--anim-delay', delay + 'ms');
 });
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    const el = entry.target;
+    if (prefersReducedMotion) {
+      el.classList.add('visible');
+    } else {
+      /* Use data-delay if present, otherwise trigger immediately */
+      const delay = parseInt(el.dataset.delay || '0', 10);
+      setTimeout(() => el.classList.add('visible'), delay);
+    }
+    revealObserver.unobserve(el);
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+
+document.querySelectorAll(animSelector).forEach(el => revealObserver.observe(el));
 
 /* ── Counter animation ── */
 const counterObserver = new IntersectionObserver((entries) => {
