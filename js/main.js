@@ -2,6 +2,13 @@
    SCI Physical Academy — Main JS
    ═══════════════════════════════════════════════ */
 
+/* ── Today indicator on opening hours ── */
+const todayNum = new Date().getDay(); // 0=Sun, 1=Mon … 6=Sat
+document.querySelectorAll('.hours-row[data-days]').forEach(row => {
+  const days = row.dataset.days.split(',').map(Number);
+  if (days.includes(todayNum)) row.classList.add('is-today');
+});
+
 /* ── Navbar scroll behaviour ── */
 const navbar  = document.getElementById('navbar');
 const navToggle = document.getElementById('navToggle');
@@ -90,6 +97,96 @@ function animateCounter(el) {
   };
   requestAnimationFrame(tick);
 }
+
+/* ── Services Flipper ── */
+const flipper = document.getElementById('servicesFlipper');
+if (flipper) {
+  const flipCards = flipper.querySelectorAll('.flip-card');
+
+  flipCards.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      flipCards.forEach(c => c.classList.remove('active'));
+      card.classList.add('active');
+      flipper.classList.add('has-active');
+    });
+  });
+
+  flipper.addEventListener('mouseleave', () => {
+    flipCards.forEach(c => c.classList.remove('active'));
+    flipper.classList.remove('has-active');
+  });
+
+  /* Touch: tap to expand, tap again to collapse */
+  flipCards.forEach(card => {
+    card.addEventListener('click', () => {
+      if (window.innerWidth > 800) return;
+      const isActive = card.classList.contains('active');
+      flipCards.forEach(c => c.classList.remove('active'));
+      flipper.classList.remove('has-active');
+      if (!isActive) {
+        card.classList.add('active');
+        flipper.classList.add('has-active');
+      }
+    });
+  });
+}
+
+/* ── Language switcher ── */
+(function () {
+  const langBtns = document.querySelectorAll('.lang-btn');
+
+  function getCookieLang() {
+    const match = document.cookie.match(/googtrans=\/en\/([a-z]+)/);
+    return (match && match[1] !== 'en') ? match[1] : 'en';
+  }
+
+  function setActiveLang(lang) {
+    langBtns.forEach(btn => {
+      const isActive = btn.dataset.lang === lang;
+      btn.classList.toggle('active', isActive);
+      btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+    });
+  }
+
+  function clearTranslateCookies() {
+    const expiry = 'expires=Thu, 01 Jan 1970 00:00:00 UTC';
+    document.cookie = 'googtrans=; ' + expiry + '; path=/';
+    document.cookie = 'googtrans=; ' + expiry + '; path=/; domain=' + location.hostname;
+    document.cookie = 'googtrans=; ' + expiry + '; path=/; domain=.' + location.hostname;
+  }
+
+  function switchLang(lang) {
+    if (lang === 'en') {
+      /* Restoring original requires clearing the cookie and reloading */
+      clearTranslateCookies();
+      window.location.reload();
+      return;
+    }
+
+    /* Switch to Greek via Google's internal combo */
+    const trySwitch = (attempts = 0) => {
+      const combo = document.querySelector('.goog-te-combo');
+      if (combo) {
+        combo.value = lang;
+        combo.dispatchEvent(new Event('change'));
+        setActiveLang(lang);
+      } else if (attempts < 20) {
+        setTimeout(() => trySwitch(attempts + 1), 300);
+      }
+    };
+    trySwitch();
+  }
+
+  /* Reflect persisted language on page load */
+  setActiveLang(getCookieLang());
+
+  langBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (btn.classList.contains('active')) return;
+      switchLang(btn.dataset.lang);
+    });
+  });
+}());
 
 /* ── Smooth parallax on hero glows ── */
 const glows = document.querySelectorAll('.hero-glow');
