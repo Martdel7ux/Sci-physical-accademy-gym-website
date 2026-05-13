@@ -10,32 +10,60 @@ document.querySelectorAll('.hours-row[data-days]').forEach(row => {
 });
 
 /* ── Navbar scroll behaviour ── */
-const navbar  = document.getElementById('navbar');
-const navToggle = document.getElementById('navToggle');
-const navLinks  = document.getElementById('navLinks');
+const navbar      = document.getElementById('navbar');
+const navToggle   = document.getElementById('navToggle');
+const navLinks    = document.getElementById('navLinks');
+const navDropdown = document.getElementById('navDropdown');
 
 window.addEventListener('scroll', () => {
   navbar.classList.toggle('scrolled', window.scrollY > 40);
 }, { passive: true });
 
-/* ── Mobile menu ── */
+/* ── Mobile dropdown menu ── */
+function openDropdown() {
+  navDropdown.classList.add('open');
+  navToggle.classList.add('open');
+  navToggle.setAttribute('aria-expanded', 'true');
+  navDropdown.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeDropdown() {
+  navDropdown.classList.remove('open');
+  navToggle.classList.remove('open');
+  navToggle.setAttribute('aria-expanded', 'false');
+  navDropdown.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
 navToggle.addEventListener('click', () => {
-  const open = navLinks.classList.toggle('open');
-  navToggle.classList.toggle('open', open);
-  document.body.style.overflow = open ? 'hidden' : '';
+  navDropdown.classList.contains('open') ? closeDropdown() : openDropdown();
 });
 
-navLinks.querySelectorAll('.nav-link').forEach(link => {
-  link.addEventListener('click', () => {
-    navLinks.classList.remove('open');
-    navToggle.classList.remove('open');
-    document.body.style.overflow = '';
-  });
+/* Close when a dropdown link is tapped */
+navDropdown.querySelectorAll('.nav-dropdown-link').forEach(link => {
+  link.addEventListener('click', closeDropdown);
+});
+
+/* Close on outside click */
+document.addEventListener('click', (e) => {
+  if (navDropdown.classList.contains('open') &&
+      !navbar.contains(e.target)) {
+    closeDropdown();
+  }
+});
+
+/* Close on Escape */
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && navDropdown.classList.contains('open')) {
+    closeDropdown();
+    navToggle.focus();
+  }
 });
 
 /* ── Active nav link on scroll ── */
-const sections = document.querySelectorAll('section[id]');
-const navAnchors = document.querySelectorAll('.nav-link');
+const sections   = document.querySelectorAll('section[id]');
+const navAnchors = document.querySelectorAll('.nav-link, .nav-dropdown-link');
 
 const activateLink = () => {
   let current = '';
